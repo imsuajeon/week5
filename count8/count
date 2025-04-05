@@ -1,0 +1,39 @@
+#!/usr/bin/bash
+
+# GPIO 핀 정의
+pin1=26  # 빨간불
+pin2=13  # 노란불
+pin3=5   # 초록불
+
+# 각 핀을 출력 모드로
+pinctrl set $pin1 op
+pinctrl set $pin2 op
+pinctrl set $pin3 op
+
+# 컨C가 눌리면 모든 led를 끄고 종료하도록 trap 설치 (사실 필요한가 싶긴 한데 동영상 찍을 때 깔끔해 보이고 싶어서 함...)
+trap 'pinctrl set $pin1 dl; pinctrl set $pin2 dl; pinctrl set $pin3 dl; exit' SIGINT
+
+# 무한루프에 들어가
+while true; do
+  for i in {0..7}; do   # 0부터 7까지 순회하면서 
+    if (( i & 1 )); then    # 최하위 비트를 봤을 때 1이라면 켜고 아니라면 끔
+      pinctrl set $pin1 dh
+    else
+      pinctrl set $pin1 dl
+    fi
+
+    if (( (i >> 1) & 1 )); then    # 두번째 비트를 봤을 때 1이라면 켜고 아니라면 끔
+      pinctrl set $pin2 dh
+    else
+      pinctrl set $pin2 dl
+    fi
+
+    if (( (i >> 2) & 1 )); then     # 세번째 비트를 봤을 때 1이라면 켜고 아니라면 끔
+      pinctrl set $pin3 dh
+    else
+      pinctrl set $pin3 dl
+    fi
+
+    sleep 1     #1초 대기기
+  done
+done
