@@ -1,6 +1,6 @@
 #### 미션 2-4 : 버튼이 눌릴 때마다 4-bit 카운터 값 증가시키기
 ---
-#### 미션 2-4 해결사 수아의 유튭: [https://youtube.com/shorts/V0Uzk6UArUI?si=h8PY-HzU9QfmQ1uS](https://youtube.com/shorts/cVn0uyiQxto?si=xAwwFE6Z04vqQrMW)
+#### 미션 2-4 해결사 수아의 유튭: https://youtu.be/0LWyPa03CkE?si=7rP4xP1azdQw4t5H
 ---
 #### 회로
 ![image](https://github.com/user-attachments/assets/942d67be-aac1-4577-99a2-63ebb42da008)
